@@ -1,4 +1,4 @@
-<h2 align="left">Hi 👋! My name is Mohsen Dastaran and I'm a Frontend Developer</h2>
+<h2 align="left">Hi 👋! My name is Mohsen Dastaran and I'm a Frontend Developer from Iran</h2>
 
 ###
 
@@ -44,7 +44,4 @@
 ###
 
 <br clear="both">
-
-<img src="https://raw.githubusercontent.com/mohsendastaran/mohsendastaran/output/snake.svg" alt="Snake animation" />
-
 ###
