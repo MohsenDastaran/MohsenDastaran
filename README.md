@@ -1,6 +1,12 @@
-<h2 align="left">Hi 👋! My name is Mohsen Dastaran and I'm a Frontend Developer</h2>
+<a href="https://github.com/MohsenDastaran/MohsenDastaran">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/MohsenDastaran/MohsenDastaran/main/dark_mode.svg">
+    <img alt="Mohsen Dastaran's GitHub Profile README" src="https://raw.githubusercontent.com/MohsenDastaran/MohsenDastaran/main/light_mode.svg">
+  </picture>
+</a>
 
 ###
+
 [![Mohsen's github activity graph](https://github-readme-activity-graph.vercel.app/graph?username=MohsenDastaran&theme=github-compact)](https://github.com/MohsenDastaran/github-readme-activity-graph)
 
 <div align="center">
