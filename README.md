@@ -7,13 +7,9 @@
 
 ###
 
-[![Mohsen's github activity graph](https://github-readme-activity-graph.vercel.app/graph?username=MohsenDastaran&theme=github-compact)](https://github.com/MohsenDastaran/github-readme-activity-graph)
-
-<div align="center">
-  <img src="https://github-readme-stats.vercel.app/api?username=mohsendastaran&hide_title=false&hide_rank=true&show_icons=true&include_all_commits=true&count_private=true&disable_animations=false&theme=vue-dark&locale=en&hide_border=false&custom_title=MohsenDastaran" height="150" alt="stats graph"  />
-  <img src="https://streak-stats.demolab.com?user=mohsendastaran&locale=en&mode=daily&theme=vue-dark&hide_border=false&border_radius=5" height="150" alt="streak graph"  />
-  <img src="https://github-readme-stats.vercel.app/api/top-langs?username=mohsendastaran&locale=en&hide_title=false&layout=compact&card_width=320&langs_count=5&theme=vue-dark&hide_border=false&custom_title=MohsenDastaran" height="150" alt="languages graph"  />
-</div>
+![GitHub Stats](https://github-readme-stats-fast.vercel.app/api?username=mohsendastaran&show_icons=true&theme=tokyonight)
+![GitHub Stats](https://github-readme-stats-fast.vercel.app/api/streak?username=mohsendastaran&theme=tokyonight)
+![GitHub Stats](https://github-readme-stats-fast.vercel.app/api/top-langs/?username=mohsendastaran&layout=compact&theme=tokyonight)
 
 ###
 
