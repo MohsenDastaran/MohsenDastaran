@@ -48,9 +48,6 @@ def build_text(text_fill):
     contact_sep = '- Contact</tspan> -' + '\u2014' * 37 + '-\u2014-\n'
     stats_sep = '- GitHub Stats</tspan> -' + '\u2014' * 33 + '-\u2014-\n'
 
-    loc_value = '0 ( 0++, 0-- )'
-    loc_dots = dots('Lines of Code on GitHub', loc_value)
-
     repos_value = f'{REPO_COUNT} {{Contributed: {REPO_COUNT}}} | Stars: {STAR_COUNT}'
     repos_dots = dots('Repos', repos_value)
 
@@ -60,7 +57,7 @@ def build_text(text_fill):
         row(70, "Mohsen's Uptime", '<tspan class="key" y="70">Mohsen\'s Uptime</tspan>', MOHSEN_UPTIME, 'mohsen_uptime_data'),
         row(90, 'GitHub Uptime', '<tspan class="key" y="90">GitHub Uptime</tspan>', '5 years, 7 months, 5 days', 'age_data'),
         row(110, 'Host', '<tspan class="key" y="110">Host</tspan>', 'Planet Earth (Remote OK)'),
-        row(130, 'Kernel', '<tspan class="key" y="130">Kernel</tspan>', 'Coffee-Powered Human'),
+        row(130, 'Kernel', '<tspan class="key" y="130">Kernel</tspan>', 'good-vibes-amd64'),
         row(150, 'IDE', '<tspan class="key" y="150">IDE</tspan>', 'VS Code, Cursor'),
         '<tspan x="390" y="170" class="cc">. </tspan>\n',
         row(190, 'Languages.Programming', '<tspan class="key" y="190">Languages</tspan>.<tspan class="key" y="190">Programming</tspan>', 'Rust, TypeScript, JavaScript'),
@@ -85,15 +82,6 @@ def build_text(text_fill):
             f'<tspan class="key">Stars</tspan>: <tspan id="star_data">{STAR_COUNT}</tspan></tspan>\n'
         ),
         row(490, 'Followers', '<tspan class="key" y="490">Followers</tspan>', str(FOLLOWER_COUNT), 'follower_data'),
-        (
-            f'<tspan x="390" y="510" class="cc">. </tspan>'
-            f'<tspan class="key" y="510">Lines of Code on GitHub</tspan>:'
-            f'<tspan class="cc" id="loc_line_dots">{loc_dots}</tspan>'
-            f'<tspan y="510" text-anchor="end" x="{RX}" class="value">'
-            f'<tspan id="loc_data">0</tspan> ( '
-            f'<tspan class="addColor" id="loc_add">0</tspan><tspan class="addColor">++</tspan>, '
-            f'<tspan class="delColor" id="loc_del">0</tspan><tspan class="delColor">--</tspan> )</tspan>\n'
-        ),
     ]
     return '<text x="390" y="30" fill="' + text_fill + '">\n' + ''.join(lines) + '</text>'
 

@@ -323,9 +323,6 @@ LABEL_WIDTHS = {
     'contrib_data': 'Repos',
     'star_data': 'Repos',
     'follower_data': 'Followers',
-    'loc_data': 'Lines of Code on GitHub',
-    'loc_add': 'Lines of Code on GitHub',
-    'loc_del': 'Lines of Code on GitHub',
 }
 
 LINE_WIDTH = 57
@@ -341,7 +338,7 @@ def justify_dots(label_plain, value_text):
     return ' ' + ('.' * gap) + ' '
 
 
-def svg_overwrite(filename, mohsen_uptime_data, age_data, star_data, repo_data, contrib_data, follower_data, loc_data):
+def svg_overwrite(filename, mohsen_uptime_data, age_data, star_data, repo_data, contrib_data, follower_data):
     tree = etree.parse(filename)
     root = tree.getroot()
 
@@ -363,15 +360,6 @@ def svg_overwrite(filename, mohsen_uptime_data, age_data, star_data, repo_data, 
     follower_data_s = format_number(follower_data)
     find_and_replace(root, 'follower_data', follower_data_s)
     find_and_replace(root, 'follower_data_dots', justify_dots('Followers', follower_data_s))
-
-    loc_total_s = format_number(loc_data[2])
-    loc_add_s = format_number(loc_data[0])
-    loc_del_s = format_number(loc_data[1])
-    loc_line = f'{loc_total_s} ( {loc_add_s}++, {loc_del_s}-- )'
-    find_and_replace(root, 'loc_data', loc_total_s)
-    find_and_replace(root, 'loc_add', loc_add_s)
-    find_and_replace(root, 'loc_del', loc_del_s)
-    find_and_replace(root, 'loc_line_dots', justify_dots('Lines of Code on GitHub', loc_line))
 
     tree.write(filename, encoding='utf-8', xml_declaration=True)
 
@@ -454,8 +442,6 @@ if __name__ == '__main__':
     formatter('mohsen uptime', mohsen_time)
     github_uptime_data, age_time = perf_counter(daily_readme, acc_created)
     formatter('github uptime', age_time)
-    total_loc, loc_time = perf_counter(loc_query, ['OWNER', 'COLLABORATOR', 'ORGANIZATION_MEMBER'], 7)
-    formatter('LOC (cached)', loc_time) if total_loc[-1] else formatter('LOC (no cache)', loc_time)
     star_data, star_time = perf_counter(graph_repos_stars, 'stars', ['OWNER'])
     if star_data == 0:
         star_data, star_fallback_time = perf_counter(public_stars_count, USER_NAME)
@@ -464,16 +450,14 @@ if __name__ == '__main__':
     contrib_data, contrib_time = perf_counter(graph_repos_stars, 'repos', ['OWNER', 'COLLABORATOR', 'ORGANIZATION_MEMBER'])
     follower_data, follower_time = perf_counter(follower_getter, USER_NAME)
 
-    for index in range(len(total_loc)-1): total_loc[index] = '{:,}'.format(total_loc[index])
-
     for svg_file in ('dark_mode.svg', 'light_mode.svg'):
         embed_ascii_art(svg_file)
 
-    svg_overwrite('dark_mode.svg', mohsen_uptime_data, github_uptime_data, star_data, repo_data, contrib_data, follower_data, total_loc[:-1])
-    svg_overwrite('light_mode.svg', mohsen_uptime_data, github_uptime_data, star_data, repo_data, contrib_data, follower_data, total_loc[:-1])
+    svg_overwrite('dark_mode.svg', mohsen_uptime_data, github_uptime_data, star_data, repo_data, contrib_data, follower_data)
+    svg_overwrite('light_mode.svg', mohsen_uptime_data, github_uptime_data, star_data, repo_data, contrib_data, follower_data)
 
-    print('\033[F\033[F\033[F\033[F\033[F\033[F\033[F\033[F',
-        '{:<21}'.format('Total function time:'), '{:>11}'.format('%.4f' % (user_time + mohsen_time + age_time + loc_time + star_time + repo_time + contrib_time)),
+    print('\033[F\033[F\033[F\033[F\033[F\033[F\033[F',
+        '{:<21}'.format('Total function time:'), '{:>11}'.format('%.4f' % (user_time + mohsen_time + age_time + star_time + repo_time + contrib_time)),
         ' s \033[E\033[E\033[E\033[E\033[E\033[E\033[E\033[E', sep='')
 
     print('Total GitHub GraphQL API calls:', '{:>3}'.format(sum(QUERY_COUNT.values())))
