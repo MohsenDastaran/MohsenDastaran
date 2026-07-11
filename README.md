@@ -7,6 +7,10 @@
 
 ###
 
+[![Mohsen's github activity graph](https://github-readme-activity-graph.vercel.app/graph?username=MohsenDastaran&theme=github-compact)](https://github.com/MohsenDastaran/github-readme-activity-graph)
+
+###
+
 <div align="center">
   <img src="https://github-readme-stats-fast.vercel.app/api/streak?username=mohsendastaran&theme=tokyonight" alt="GitHub Stats" />
   <br />
