@@ -317,7 +317,7 @@ def embed_ascii_art(filename):
 
 
 LABEL_WIDTHS = {
-    'mohsen_uptime_data': "Mohsen's Uptime",
+    'mohsen_uptime_data': "Mohsen Uptime",
     'age_data': 'GitHub Uptime',
     'repo_data': 'Repos',
     'contrib_data': 'Repos',
