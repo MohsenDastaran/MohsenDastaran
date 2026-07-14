@@ -54,7 +54,7 @@ def build_text(text_fill):
     lines = [
         f'<tspan x="390" y="30">MohsenDastaran</tspan>{sep}',
         row(50, 'OS', '<tspan class="key" y="50">OS</tspan>', 'Linux, Windows'),
-        row(70, "Mohsen Uptime", '<tspan class="key" y="70">Mohsen\'s Uptime</tspan>', MOHSEN_UPTIME, 'mohsen_uptime_data'),
+        row(70, 'Mohsen Uptime', '<tspan class="key" y="70">Mohsen Uptime</tspan>', MOHSEN_UPTIME, 'mohsen_uptime_data'),
         row(90, 'GitHub Uptime', '<tspan class="key" y="90">GitHub Uptime</tspan>', '5 years, 7 months, 5 days', 'age_data'),
         row(110, 'Host', '<tspan class="key" y="110">Host</tspan>', 'Planet Earth (Remote OK)'),
         row(130, 'Kernel', '<tspan class="key" y="130">Kernel</tspan>', 'good-vibes-amd64'),
