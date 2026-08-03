@@ -70,7 +70,8 @@ def graph_repos_stars(count_type, owner_affiliation, cursor=None, accumulated_st
         if count_type == 'repos':
             return repositories['totalCount']
         elif count_type == 'stars':
-            accumulated_stars += stars_counter(repositories['edges'])
+            edges = repositories.get('edges') or []
+            accumulated_stars += stars_counter(edges)
             if repositories['pageInfo']['hasNextPage']:
                 return graph_repos_stars(count_type, owner_affiliation, repositories['pageInfo']['endCursor'], accumulated_stars)
             return accumulated_stars
@@ -282,7 +283,14 @@ def force_close_file(data, cache_comment):
 
 def stars_counter(data):
     total_stars = 0
-    for node in data: total_stars += node['node']['stargazers']['totalCount']
+    for edge in data:
+        node = edge.get('node') if edge else None
+        if not node:
+            continue
+        stargazers = node.get('stargazers')
+        if not stargazers:
+            continue
+        total_stars += stargazers.get('totalCount', 0)
     return total_stars
 
 
@@ -442,8 +450,12 @@ if __name__ == '__main__':
     formatter('mohsen uptime', mohsen_time)
     github_uptime_data, age_time = perf_counter(daily_readme, acc_created)
     formatter('github uptime', age_time)
-    star_data, star_time = perf_counter(graph_repos_stars, 'stars', ['OWNER'])
-    if star_data == 0:
+    try:
+        star_data, star_time = perf_counter(graph_repos_stars, 'stars', ['OWNER'])
+    except Exception as error:
+        print('   stars graph failed:', error)
+        star_data, star_time = 0, 0
+    if not star_data:
         star_data, star_fallback_time = perf_counter(public_stars_count, USER_NAME)
         star_time += star_fallback_time
     repo_data, repo_time = perf_counter(graph_repos_stars, 'repos', ['OWNER'])
