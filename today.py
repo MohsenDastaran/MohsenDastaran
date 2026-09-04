@@ -50,9 +50,7 @@ def graph_repos_stars(count_type, owner_affiliation, cursor=None, accumulated_st
                     node {
                         ... on Repository {
                             nameWithOwner
-                            stargazers {
-                                totalCount
-                            }
+                            stargazerCount
                         }
                     }
                 }
@@ -79,15 +77,17 @@ def graph_repos_stars(count_type, owner_affiliation, cursor=None, accumulated_st
 
 def public_stars_count(username):
     """
-    Public REST fallback for total stars across owned repositories.
+    Total stars across every owned public repository, not just this profile repo.
     """
     total_stars = 0
     page = 1
+    headers = {'Accept': 'application/vnd.github+json', 'User-Agent': 'MohsenDastaran-readme'}
+    headers.update(HEADERS)
     while True:
         response = requests.get(
             f'https://api.github.com/users/{username}/repos',
             params={'per_page': 100, 'page': page, 'type': 'owner'},
-            headers={'Accept': 'application/vnd.github+json'},
+            headers=headers,
             timeout=30,
         )
         if response.status_code != 200:
@@ -287,10 +287,7 @@ def stars_counter(data):
         node = edge.get('node') if edge else None
         if not node:
             continue
-        stargazers = node.get('stargazers')
-        if not stargazers:
-            continue
-        total_stars += stargazers.get('totalCount', 0)
+        total_stars += node.get('stargazerCount') or 0
     return total_stars
 
 
@@ -455,9 +452,10 @@ if __name__ == '__main__':
     except Exception as error:
         print('   stars graph failed:', error)
         star_data, star_time = 0, 0
-    if not star_data:
-        star_data, star_fallback_time = perf_counter(public_stars_count, USER_NAME)
-        star_time += star_fallback_time
+    # GraphQL with a repo-scoped token may only see this repository's nodes.
+    public_stars, star_fallback_time = perf_counter(public_stars_count, USER_NAME)
+    star_time += star_fallback_time
+    star_data = max(star_data or 0, public_stars or 0)
     repo_data, repo_time = perf_counter(graph_repos_stars, 'repos', ['OWNER'])
     contrib_data, contrib_time = perf_counter(graph_repos_stars, 'repos', ['OWNER', 'COLLABORATOR', 'ORGANIZATION_MEMBER'])
     follower_data, follower_time = perf_counter(follower_getter, USER_NAME)

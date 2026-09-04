@@ -29,7 +29,7 @@ text, tspan {white-space: pre;}
 <tspan x="390" y="410" class="cc">. </tspan><tspan class="key" y="410">Telegram</tspan>:<tspan class="cc"> .......................... </tspan><tspan class="value" text-anchor="end" x="955" y="410">t.me/MohsenDastaran</tspan>
 <tspan x="390" y="430" class="cc">. </tspan>
 <tspan x="390" y="450">- GitHub Stats</tspan> -—————————————————————————————————-—-
-<tspan x="390" y="470" class="cc">. </tspan><tspan class="key" y="470">Repos</tspan>:<tspan class="cc" id="repos_line_dots"> ................. </tspan><tspan y="470" text-anchor="end" x="955" class="value"><tspan id="repo_data">39</tspan> {<tspan class="key">Contributed</tspan>: <tspan id="contrib_data">43</tspan>} | <tspan class="key">Stars</tspan>: <tspan id="star_data">2</tspan></tspan>
+<tspan x="390" y="470" class="cc">. </tspan><tspan class="key" y="470">Repos</tspan>:<tspan class="cc" id="repos_line_dots"> ................ </tspan><tspan y="470" text-anchor="end" x="955" class="value"><tspan id="repo_data">39</tspan> {<tspan class="key">Contributed</tspan>: <tspan id="contrib_data">43</tspan>} | <tspan class="key">Stars</tspan>: <tspan id="star_data">37</tspan></tspan>
 <tspan x="390" y="490" class="cc">. </tspan><tspan class="key" y="490">Followers</tspan>:<tspan class="cc" id="follower_data_dots"> .......................................... </tspan><tspan class="value" id="follower_data" text-anchor="end" x="955" y="490">15</tspan>
 </text>
 </svg>

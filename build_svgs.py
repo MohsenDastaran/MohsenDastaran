@@ -19,7 +19,7 @@ MOHSEN_UPTIME = (
     f"{diff.days} {plural(diff.days, 'day')}"
 )
 
-REPO_COUNT, STAR_COUNT, FOLLOWER_COUNT = 34, 26, 13
+REPO_COUNT, STAR_COUNT, FOLLOWER_COUNT = 34, 37, 13
 
 
 def esc(value):
@@ -69,7 +69,7 @@ def build_text(text_fill):
         row(330, 'Email', '<tspan class="key" y="330">Email</tspan>', 'mohsen.dastaran@gmail.com'),
         row(350, 'GitHub', '<tspan class="key" y="350">GitHub</tspan>', 'github.com/MohsenDastaran'),
         row(370, 'LinkedIn', '<tspan class="key" y="370">LinkedIn</tspan>', 'linkedin.com/in/mohsendastaran'),
-        row(390, 'Portfolio', '<tspan class="key" y="390">Portfolio</tspan>', 'mohsendastaran.netlify.app'),
+        row(390, 'Portfolio', '<tspan class="key" y="390">Portfolio</tspan>', 'mohsen.dastaran.com'),
         row(410, 'Telegram', '<tspan class="key" y="410">Telegram</tspan>', 't.me/MohsenDastaran'),
         '<tspan x="390" y="430" class="cc">. </tspan>\n',
         f'<tspan x="390" y="450">{stats_sep}',
